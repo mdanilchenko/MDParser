@@ -1,0 +1,57 @@
+@font-face {
+    font-family: Days; /* Гарнитура шрифта */
+    src: url('/MDParser/template/styles/Days.ttf');
+}
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    color:#656565;
+    font-size:14px;
+    font-weight: 100;
+}
+body{
+    margin:5px 20px;
+}
+h1,h2 {
+    color:#02b3e9;
+    font-family: Days, 'Comic Sans MS';
+}
+h3,h4,h5{
+    color: #7ad4ef;
+    font-family: Days, 'Comic Sans MS';
+}
+h1.added, h2.added {
+    color:#02e95e;
+}
+h3.added,h4.added,h5.added{
+    color: #7aefa1;
+}
+h1.updated, h2.updated {
+    color:#9900cc;
+}
+h3.updated,h4.updated,h5.updated{
+    color: #ac7aef;
+}
+a{
+    text-decoration: none;
+    color:#02b3e9;
+}
+a:hover{
+    text-decoration: underline;
+}
+.list_num, .list_uns{
+    min-width:40px;
+}
+span.code{
+    font-family: Calibri;
+    padding:3px;
+    background-color: #EEEEEE;
+    color:#000000;
+}
+div.code{
+    font-family: Calibri;
+    margin:5px;
+    padding:10px;
+    background-color: #EEEEEE;
+    color:#000000;
+
+}
