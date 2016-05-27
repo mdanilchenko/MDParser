@@ -55,3 +55,33 @@ div.code{
     color:#000000;
 
 }
+.contents{
+    border: 2px solid #EEEEEE;
+    border-radius:5px;
+    padding:5px;
+}
+.contents h1, .contents h2, .contents h3, .contents h4, .contents h5{
+    margin:0px;
+    padding:0px;
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:16px;
+}
+.contents .contentsTitle{
+    font-size:20px;
+    padding:15px 0 15px 0;
+}
+.contents h1{
+    margin-left:1em;
+}
+.contents h2{
+    margin-left:2em;
+}
+.contents h3{
+    margin-left:3em;
+}
+.contents h4{
+    margin-left:4em;
+}
+.contents h5{
+    margin-left:5em;
+}

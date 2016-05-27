@@ -15,12 +15,17 @@ class MDParser
     private $startEndReplacements = array( '<span class="code">$1</span>', '<b>$1</b>', '<i>$1</i>', '<a name="$1"></a>','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
 
     private $listTemplates = array('/^(\d+)\.(.*)$/m', '/^\*(.*)$/m', '/\[(.+)\]\((.+)\)/i');
-    private $listReplacement = array('<div><span class="list_num">$1</span> $2</div>', '<div><span class="list_uns">&bull;</span> $1</div>', '<a target="_blank" href="$2" >$1</a>');
+    private $listReplacement = array('<div><span class="list_num">$1.&nbsp;</span> $2</div>', '<div><span class="list_uns">&bull;&nbsp;</span> $1</div>', '<a target="_blank" href="$2" >$1</a>');
 
-    public function parseToHtml($text)
+    public function parseToHtml($text,$matchLevel=2)
     {
+        if($matchLevel>0) {
+            $contents = $this->getTextContents($text, $matchLevel);
+            $text = $contents."\r\n".$text;
+        }
+
         $title = "Document";
-        preg_match_all('/^#(.*?)$/m', $text, $matches);
+        preg_match_all('/^# (.*?)$/m', $text, $matches);
         if(isset($matches[1]) and (count($matches[1]>0))){
             $title = $matches[1][0];
         }
@@ -87,8 +92,15 @@ class MDParser
                 $newText = str_replace($updates['updated'][$i],'u'.$updates['updated'][$i] ,$newText);
             }
         }
-        return $this->parseToHtml($newText);
+        return $this->parseToHtml($newText,$matchLevel);
     }
-
+    private function getTextContents($text,$matchLevel=2){
+        preg_match_all('/^[u|a]?#{'.$matchLevel.'}(.*?)$/m', $text, $matches);
+        $result_hashes = array();
+        if(isset($matches[0]) and (count($matches[0])>0)){
+            $result_hashes =$matches[0];
+        }
+        return '<div class="contents"><h4 class="contentsTitle">Contents</h4>'."\r\n".implode("\r\n",$result_hashes)."\r\n</div>";
+    }
 }
 ?>
