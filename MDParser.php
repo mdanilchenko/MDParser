@@ -33,7 +33,7 @@ class MDParser
         preg_match_all('/```(.+)```/Us', $text, $matches);
         if(isset($matches[0]) and (count($matches[0])>0)){
             for($i=0;$i<count($matches[0]);$i++) {
-                $replaced = str_replace("\n","<br>",trim($matches[1][$i],"\n"));
+                $replaced = str_replace("\n","<br>",htmlspecialchars(trim($matches[1][$i],"\n")));
                 $text = str_replace($matches[0][$i],'<div class="code">'.$replaced.'</div>',$text);
             }
         }
